@@ -1,0 +1,71 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0-rc1'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
+        
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+
+    vBuildTools = "26.0.2"
+    vMinSdk = 15
+    vTargetSdk = 26
+    vCompileSdk = 26
+
+    vMajor = 1
+    vMinor = 0
+    vPatch = 0
+
+    supportPackage = "com.android.support"
+    vSupportLibrary = "26.0.0-alpha1"
+    vConstrainLayout = "1.0.2"
+
+    instrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    vEspresso = "2.2.2"
+    vJunit = "4.12"
+
+    JakeWhartonPackage = "com.jakewharton"
+    vButterKnife = "8.8.1"
+
+    RetrofitPackage = "com.squareup.retrofit2"
+    vRetrofit = "2.3.0"
+
+    dependencies = [
+
+            espresso              : "${supportPackage}.test.espresso:espresso-core:$vEspresso",
+            junit                 : "junit:junit:$vJunit",
+
+            appcompat             : "$supportPackage:appcompat-v7:$vSupportLibrary",
+            design                : "$supportPackage:design:$vSupportLibrary",
+            recyclerview          : "$supportPackage:recyclerview-v7:$vSupportLibrary",
+            cardview              : "$supportPackage:cardview-v7:$vSupportLibrary",
+            constraint_layout     : "${supportPackage}.constraint:constraint-layout:$vConstrainLayout",
+
+            butterknife_core      : "$JakeWhartonPackage:butterknife:$vButterKnife",
+            butterknife_compiler  : "$JakeWhartonPackage:butterknife-compiler:$vButterKnife",
+            retrofit              : "$RetrofitPackage:retrofit:$vRetrofit",
+            retrofit_converter_xml: "$RetrofitPackage:converter-simplexml:$vRetrofit",
+    ]
+}

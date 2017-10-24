@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+def configs = rootProject.ext
+
+android {
+    compileSdkVersion configs.vCompileSdk
+    buildToolsVersion configs.vBuildTools
+    defaultConfig {
+        applicationId "com.tgbsco.rssreader"
+        minSdkVersion configs.vMinSdk
+        targetSdkVersion configs.vTargetSdk
+        versionCode configs.vMajor * 100 + configs.vMinor * 10 + configs.vPatch
+        versionName "${configs.vMajor}.${configs.vMinor}.${configs.vPatch}"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+
+        debug
+                {
+                    minifyEnabled false
+                    shrinkResources false
+                    zipAlignEnabled false
+                    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                }
+
+        release
+                {
+                    minifyEnabled true
+                    shrinkResources true
+                    zipAlignEnabled true
+                    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    Map<String, String> dep = configs.dependencies
+    androidTestImplementation(dep.espresso, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation dep.junit
+    implementation dep.appcompat
+    implementation dep.design
+    implementation dep.recyclerview
+    implementation dep.cardview
+    implementation dep.constraint_layout
+    implementation dep.butterknife_core
+    annotationProcessor dep.butterknife_compiler
+    implementation dep.retrofit
+    implementation dep.retrofit_converter_xml
+}

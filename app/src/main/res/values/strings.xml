@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RSS Reader</string>
+
+    <string name="network_504">خطای ارتباط اینترنتی. هیچ پاسخی دریافت نشد</string>
+    <string name="network_500">خطای ارتباط اینترنتی. سرویس دهنده دچار خطا شده است</string>
+    <string name="network_404">خطای ارتباط اینترنتی. داده خواسته شده یافت نشد</string>
+    <string name="network_403">خطای ارتباط اینترنتی. دسترسی غیرمجاز رخ داده است</string>
+    <string name="network_401">خطای ارتباط اینترنتی. درخواست ارسال شده معتبر نیست</string>
+    <string name="network_unknown">خطای نا مشخصی رخ داده است</string>
+
+</resources>
